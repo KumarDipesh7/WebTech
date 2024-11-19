@@ -1,0 +1,124 @@
+chessboard.php
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+<title>Chessboard</title>
+<style>
+.chessboard { width: 240px; height: 240px; display: grid;
+grid-template-columns: repeat(8, 30px); grid-template-rows: repeat(8, 30px);
+}
+
+
+.cell {
+width: 30px; height: 30px;
+text-align: center; line-height: 30px; font-weight: bold;
+}
+
+
+.white {
+background-color: #f0d9b5;
+}
+
+
+.black {
+background-color: #b58863;
+
+color: white;
+}
+</style>
+</head>
+
+
+<body>
+<h2>Chessboard</h2>
+<div class="chessboard">
+<?php
+$isWhite = true;
+for ($row = 1; $row <= 8; $row++) { for ($col = 1; $col <= 8; $col++) {
+$cellClass = $isWhite ? "white" : "black";
+echo "<div class='cell $cellClass'>$row, $col</div>";
+$isWhite = !$isWhite;
+}
+$isWhite = !$isWhite;
+}
+?>
+</div>
+</body>
+
+
+</html>
+
+
+This program creates an 8x8 chessboard using an HTML grid layout. It uses PHP to loop through the rows and columns and assigns appropriate classes for white and black cells. The CSS styles define the appearance of the chessboard with alternating colours for the cells.
+
+Write a PHP program to store page views count in SESSION, to increment the count on each refresh, and to show the count on web page.
+
+session.php
+<?php session_start();
+// Check if the 'views' session variable exists if (!isset($_SESSION['views'])) {
+$_SESSION['views'] = 1; // Initialize the 'views' session variable to 1 if it doesn't exist
+} else {
+$_SESSION['views']++; // Increment the 'views' session variable if it exists
+}
+?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Views Counter</title>
+</head>
+<body>
+<h2>Page Views Counter</h2>
+<p>This page has been viewed <?php echo $_SESSION['views']; ?> times.</p>
+<p>Refresh the page to see the count increase.</p>
+</body>
+</html>
+
+
+In this program, we start the session using session_start() at the beginning. The page views count is stored in the $_SESSION['views'] variable. If the session variable 'views' doesn't exist (first visit), it is initialized to 1. On subsequent visits, the count is incremented by 1.
+The page will display the current page views count and on each refresh, the count will increase. The count will persist as long as the session is active, typically until the browser is closed.
+
+Write a PHP program to store current date-time in a COOKIE and display the ‘Last visited on’ date-time on the web page upon reopening of the same page.
+
+cookie.php
+<?php
+// Set the cookie with the current date-time
+$expiration = time() + (60 * 60 * 24 * 30); // Cookie will expire in 30 days if (!isset($_COOKIE['last_visited'])) {
+setcookie('last_visited', date('Y-m-d H:i:s'), $expiration);
+}
+
+
+// Get the last visited date-time from the cookie
+$lastVisitedDateTime = $_COOKIE['last_visited'] ?? 'Unknown';
+?>
+
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+<title>Last Visited Date-Time</title>
+</head>
+
+
+<body>
+<h2>Last Visited Date-Time</h2>
+<p>
+<?php
+if ($lastVisitedDateTime !== 'Unknown') {
+echo 'Last visited on: ' . $lastVisitedDateTime;
+} else {
+echo 'Welcome! This is your first visit.';
+}
+?>
+
+</p>
+</body>
+
+
+</html>
