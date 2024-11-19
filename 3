@@ -1,0 +1,115 @@
+<html>
+<body>
+
+
+<div onmousedown="mDown(this)" onmouseup="mUp(this)"style="background-color:#D94A38;width:90px;height:20px;padding:40px;">Click Me</div>
+
+<script>
+function mDown(obj) { obj.style.backgroundColor="#1ec5e5"; obj.innerHTML = "Release Me";
+}
+
+function mUp(obj) { obj.style.backgroundColor="#D94A38"; obj.innerHTML="Thank You";
+}
+</script>
+
+
+</body>
+</html>
+
+
+WriteanHTML pagethatreadsnameandUSNfromtheformand displays it.
+
+
+Prgm3b.html
+
+<html>
+<head>
+<title>Events</title>
+</head>
+	
+
+<scripttype="text/javascript"> function msg()
+{varname=document.person.n1; var usn= document.person.n2;
+alert("Hello"+name.value+"USN"+usn.value);
+}
+</script>
+
+<body>
+</br></br>
+<formname="person">
+
+EnterThename</br>
+<inputtype="text"name="n1"></br></br>
+
+EnterTheUSN</br>
+<inputtype="text"name="n2">
+
+
+<inputtype="submit"onClick="msg();">
+
+</form>
+</body>
+</html>
+
+
+Write an HTML page that contains a selection box with a list of 5 countries.Whentheuserselectsacountry,itscapitalshouldbeprintednext to the list. Add CSS to customize the properties of the font of the capital (color, bold and font size).
+
+Prgm3c.html
+
+<html>
+<head>
+<title>CapitalsofCountries</title>
+
+<style>p{ color:red;
+font-weight:bold; font-size:50;
+}
+</style>
+
+<scriptlanguage="javascript"> function capital()
+{
+var cunt=document.forms["frm1"].country.value; var capital=" Please select any country ";
+if(cunt=="INDIA")
+{
+capital="NEWDELHI";
+}
+if(cunt=="USA")
+{
+capital="WASHINGTONDC";
+}
+if(cunt=="NETHERLANDS")
+
+{
+capital="AMSTERDAM";
+}
+if(cunt=="RUSSIA")
+{
+capital="MOSCOW";
+}
+if(cunt=="JAPAN")
+{
+capital="TOKYO";
+}
+if(cunt=="select")
+{
+capital="PleaseselectanyCountry";
+}
+document.getElementById("capt").innerHTML=capital;
+}
+</script>
+</head>
+
+
+<body>
+<formname="frm1">
+<br/>
+<center>
+SelectaCountry:<selectname="country"onchange="capital()">
+<optionvalue="select">--SELECT--</option>
+<optionvalue="INDIA">INDIA</option>
+<optionvalue="USA">USA</option>
+<optionvalue="NETHERLANDS">NETHERLANDS</option>
+<optionvalue="RUSSIA">RUSSIA</option>
+<optionvalue="JAPAN">JAPAN</option>
+</select>
+<br/>
+<br/>
